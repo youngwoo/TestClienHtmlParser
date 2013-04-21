@@ -35,9 +35,9 @@
 
 - (IBAction)onReadBtnClicked:(id)sender
 {
-	[self parseList];
+//	[self parseList];
 //	[self parseChehum];
-//	[self parseHongbo];
+	[self parseHongbo];
 }
 
 - (void) parseList
@@ -106,10 +106,10 @@
 	}
 }
 
-//  사용기, 알뜰구매, 쿠폰/이벤트
+//  체험단사용기, 알뜰구매, 쿠폰/이벤트
 - (void) parseChehum
 {
-	NSString* url = @"http://www.clien.net/cs2/bbs/board.php?bo_table=hongbo";
+	NSString* url = @"http://www.clien.net/cs2/bbs/board.php?bo_table=jirum";
 	NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
 	TFHpple* doc = [[TFHpple alloc] initWithHTMLData:data];
 	NSArray* items = [doc searchWithXPathQuery:@"//div[@class='board_main']//table//tbody//tr"];
@@ -232,7 +232,7 @@
 		NSInteger nameNodeCnt = subjectElement.children.count;
 		NSInteger reply = 0;
 		
-		if (nameNodeCnt >= 3)
+		if (nameNodeCnt > 3)
 		{
 			NSString* replyStr = [[subjectElement.children[3] firstChild] content];
 			replyStr =  [replyStr stringByReplacingOccurrencesOfString:@"[" withString:@""];
