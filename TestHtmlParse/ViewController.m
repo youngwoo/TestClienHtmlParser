@@ -187,7 +187,6 @@
 	NSString* url = @"http://www.clien.net/cs2/bbs/board.php?bo_table=hongbo";
 	NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
 	TFHpple* doc = [[TFHpple alloc] initWithHTMLData:data];
-	//	NSArray* items = [doc searchWithXPathQuery:@"//tr[@class='mytr']"];
 	NSArray* items = [doc searchWithXPathQuery:@"//div[@class='board_main']//table//tbody//tr"];
 	
 	NSMutableString* logs = [NSMutableString new];
